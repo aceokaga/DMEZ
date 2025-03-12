@@ -1,0 +1,24 @@
+local Players = game:GetService("Players")
+
+local function highlightPlayer(player)
+    if player.Character then
+
+        if not player.Character:FindFirstChild("Highlight") then
+            local highlight = Instance.new("Highlight")
+            highlight.Parent = player.Character
+            highlight.FillColor = Color3.fromRGB(200,0, 0) -- Yellow glow
+            highlight.OutlineColor = Color3.fromRGB(255, 0, 0) -- Red outline
+            highlight.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
+        end
+    end
+end
+
+for _, player in pairs(Players:GetPlayers()) do
+    highlightPlayer(player)
+end
+
+Players.PlayerAdded:Connect(function(player)
+    player.CharacterAdded:Connect(function()
+        highlightPlayer(player)
+    end)
+end)
