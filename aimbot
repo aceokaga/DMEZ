@@ -49,8 +49,3 @@ RunService.RenderStepped:Connect(function()
     end
 end)
 
-game:GetService("StarterGui"):SetCore("SendNotification",{
-	Title = "DMEZ", -- Required
-	Text = "AimBot Toggled!", -- Required
-	Icon = nil -- Optional
-})
