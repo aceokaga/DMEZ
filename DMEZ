@@ -1,0 +1,70 @@
+local Library = loadstring(Game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
+local p = Library:NewWindow("DMEZ")
+ 
+local e = p:NewSection("Main")
+local f = p:NewSection("Scripts")
+ 
+e:CreateButton("Aimbot", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/aceokaga/dmez-aimbot/refs/heads/main/aimbot"))()
+
+game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = "DMEZ", -- Required
+	Text = "AimBot Toggled!", -- Required
+	Icon = nil -- Optional
+})
+end)
+ 
+e:CreateButton("ESP", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/aceokaga/dmez-aimbot/refs/heads/main/esp"))()
+
+game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = "DMEZ", -- Required
+	Text = "ESP Toggled!", -- Required
+	Icon = nil -- Optional
+})
+end)                                 
+
+e:CreateButton("Chams/Name ESP", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/aceokaga/dmez-aimbot/refs/heads/main/name%20esp"))()
+
+game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = "DMEZ", -- Required
+	Text = "Name ESP Toggled!", -- Required
+	Icon = nil -- Optional
+})
+end)     
+
+f:CreateButton("Infinite Yield", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+end)
+
+f:CreateButton("AnnaBypasser", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/AnnaRoblox/AnnaBypasser/refs/heads/main/AnnaBypasser.lua"))()
+end)
+
+f:CreateButton("RemoteSpy", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/InfernusScripts/Octo-Spy/refs/heads/main/Main.lua", true))()
+end)
+
+f:CreateButton("Highlight Hub", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ThatSick/HighlightMM2/main/Main"))()
+end)
+
+f:CreateButton("YARHM", function()
+oadstring(game:HttpGet("https://raw.githubusercontent.com/Joystickplays/psychic-octo-invention/main/source/yarhm/1.18/yarhm.lua"))()
+end)
+
+game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = "DMEZ", -- Required
+	Text = "DMEZ has been loaded!", -- Required
+	Icon = nil -- Optional
+})
+
+print[[                                                 
+    _/_/_/    _/      _/  _/_/_/_/  _/_/_/_/_/   
+   _/    _/  _/_/  _/_/  _/              _/      
+  _/    _/  _/  _/  _/  _/_/_/        _/         
+ _/    _/  _/      _/  _/          _/            
+_/_/_/    _/      _/  _/_/_/_/  _/_/_/_/_/       
+                                                 
+~~~~DMEZ Version 1.0.0 by aceokaga~~~~]]
