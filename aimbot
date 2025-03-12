@@ -1,0 +1,50 @@
+local Players = game:GetService("Players")
+local UserInputService = game:GetService("UserInputService")
+local RunService = game:GetService("RunService")
+
+local player = Players.LocalPlayer
+local camera = workspace.CurrentCamera
+local lockOnRadius = 50
+local target = nil
+
+local function findNearestTarget()
+    local nearestTarget = nil
+    local shortestDistance = lockOnRadius
+    
+    for _, otherPlayer in pairs(Players:GetPlayers()) do
+        if otherPlayer ~= player and otherPlayer.Character and otherPlayer.Character:FindFirstChild("HumanoidRootPart") then
+            local targetPosition = otherPlayer.Character.HumanoidRootPart.Position
+            local distance = (player.Character.HumanoidRootPart.Position - targetPosition).Magnitude
+            
+            if distance < shortestDistance then
+                shortestDistance = distance
+                nearestTarget = otherPlayer.Character.HumanoidRootPart
+            end
+        end
+    end
+    return nearestTarget
+end
+
+local function lockOnTarget()
+    if target then
+        camera.CFrame = CFrame.new(camera.CFrame.Position, target.Position)
+    end
+end
+
+UserInputService.InputBegan:Connect(function(input, gameProcessed)
+    if input.UserInputType == Enum.UserInputType.MouseButton2 then 
+        target = findNearestTarget()
+    end
+end)
+
+UserInputService.InputEnded:Connect(function(input, gameProcessed)
+    if input.UserInputType == Enum.UserInputType.MouseButton2 then
+        target = nil 
+    end
+end)
+
+RunService.RenderStepped:Connect(function()
+    if target then
+        lockOnTarget()
+    end
+end)
