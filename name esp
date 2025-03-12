@@ -1,0 +1,43 @@
+local Players = game:GetService("Players")
+
+local function addNameTag(player)
+    if player.Character then
+        local head = player.Character:FindFirstChild("Head")
+        if head and not head:FindFirstChild("NameTag") then
+            local billboard = Instance.new("BillboardGui")
+            billboard.Name = "NameTag"
+            billboard.Adornee = head
+            billboard.Size = UDim2.new(4, 0, 1, 0)
+            billboard.StudsOffset = Vector3.new(0, 2, 0)
+            billboard.AlwaysOnTop = true
+
+            local textLabel = Instance.new("TextLabel")
+            textLabel.Parent = billboard
+            textLabel.Size = UDim2.new(1, 0, 1, 0)
+            textLabel.BackgroundTransparency = 1
+            textLabel.TextScaled = true
+            textLabel.Text = player.Name
+            textLabel.TextColor3 = Color3.new(1, 1, 1)
+            textLabel.Font = Enum.Font.SourceSansBold
+
+            billboard.Parent = head
+        end
+    end
+end
+
+-- Add name tags to all current players
+for _, player in pairs(Players:GetPlayers()) do
+    player.CharacterAdded:Connect(function()
+        addNameTag(player)
+    end)
+    if player.Character then
+        addNameTag(player)
+    end
+end
+
+-- Listen for new players joining
+Players.PlayerAdded:Connect(function(player)
+    player.CharacterAdded:Connect(function()
+        addNameTag(player)
+    end)
+end)
